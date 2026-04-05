@@ -689,7 +689,7 @@ public class SwitchPatternRewriter  implements Op04Rewriter {
                 current = pre;
                 continue;
             }
-            // Validate that this is either a comment
+            // If this is a comment, simply skip over
             StructuredStatement st = current.getStatement();
             if (st instanceof StructuredComment) {
                 // ignore.
@@ -757,7 +757,6 @@ public class SwitchPatternRewriter  implements Op04Rewriter {
             originalSwitchValue = originalSwitchValue.applyExpressionRewriter(new LValueReplacingRewriter(replace), null, container, null);
         }
 
-        // walk these backwards (which is list order) - we allow ONLY simple
         return originalSwitchValue;
     }
 
